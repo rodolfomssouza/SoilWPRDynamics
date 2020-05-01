@@ -33,6 +33,8 @@ Please see the examples files in order to ensure the model will run correctly.
 Open the file [run_simulation.py](run_simulation.py) and change the name of your file with data and parameters and save the file.
 One it is done, run [run_simulation.py](run_simulation.py) and the results will appear in the folder results.
 
+You can change the initial value of soil moisture to compute the dryness time based on the starting point and the soil parameters.
+
 We do not recommend you to edit [spr_models.py](spr_models.py) unless you want to change the equations.
 In any case, it is recommend to backup the project before edit the files.
 
