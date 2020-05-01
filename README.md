@@ -5,7 +5,7 @@
 ## Description
 
 The main code for simulating soil water balance and soil penetration resistance under water-controlled environments.
-The details about the models and the results, as well as other important references are found in [Souza et al. (2020)](doi).
+The details about the models and the results, as well as other important references are found in [Souza et al. (2020)](https://www.journals.elsevier.com/soil-and-tillage-research).
 
 This code was written using [Python 3.7](https://www.python.org/) and requires the fellow libraries:
 
