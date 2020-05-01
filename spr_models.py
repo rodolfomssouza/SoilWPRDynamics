@@ -64,6 +64,11 @@ class Soil:
         tsstar = ((p['sfc'] - p['sstar']) / eta) + tsfc
         tsw = ((p['sstar'] - p['sw']) / (eta - etaw)) * np.log(eta / etaw) + tsstar
         stime = dict(tsfc=np.round(tsfc, 3), tsstar=np.round(tsstar, 3), tsw=np.round(tsw, 3))
+
+        print(f'\nDryness time with soil moisture starting at {s0:.2f}:\n'
+              f'reach field capacity: {tsfc:.2f} days;\n'
+              f'reach sstar: {tsstar:=13.2f} days;\n'
+              f'reach wilting point: {tsw:=5.2f} days.')
         return stime
 
     def soilf(self):

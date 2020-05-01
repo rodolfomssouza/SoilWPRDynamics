@@ -56,13 +56,16 @@ paramsr = {'sh': params['sh'][0],          # s at hygroscopic point
 
 
 # Run simulation -------------------------------------------------------------
-
 soil_sim = soilpr.Soil(rains=raindata.rain.values, **paramsr).swbprday()
 soil_sim.to_csv('results/SWB_PR_simulation_'+params['name'][0]+'.csv')
 
+# Time of dryness
+s0 = 0.5
+tdry = soilpr.Soil(**paramsr).soil_dryness(s0)
+
 # Sample of plot -------------------------------------------------------------
 # Create plot for maximum 365 days
-days = len(soil_sim.Rain.values)
+days = len(soil_sim.Rain)
 if days > 365:
     days = 364
 else:
@@ -70,7 +73,7 @@ else:
 
 # Filter data
 soil2 = soil_sim.loc[0:days]
-days = np.arange(1, (days+2))
+days = soil2.index.values + 1
 
 fig = plt.figure(figsize=(14, 14/1.618))
 rect = fig.patch
