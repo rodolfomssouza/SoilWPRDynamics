@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DynamicSPR.iml" filepath="$PROJECT_DIR$/.idea/DynamicSPR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SoilPR_dev.iml" filepath="$PROJECT_DIR$/.idea/SoilPR_dev.iml" />
     </modules>
   </component>
 </project>

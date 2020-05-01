@@ -1,6 +1,3 @@
----
-urlcolor: blue
----
 
 # Soil water balance and penetration resistance modeling
 
@@ -15,16 +12,17 @@ This code was written using [Python 3.7](https://www.python.org/) and requires t
 - [numpy](https://numpy.org/)
 - [pandas](https://pandas.pydata.org/)
 - [matplotlib](https://matplotlib.org/)
+- [tqdm](https://pypi.org/project/tqdm/)
 
 In order to have a better performance, make sure that the latest version of these libraries are installed.
 This project is structured as the following:
 
-|Folder or file     |Description                                                             |
-|-------------------|------------------------------------------------------------------------|
-|data               | folder with input data and parameters                                  |
-|results            | folder the model outputs will be saved                                 |
-|run\_simulation.py | python code to run the simulations                                     |
-|spr\_models.py     | python code with the models (module) to be imported during the running |
+|Folder or file                          |Description                                                             |
+|----------------------------------------|------------------------------------------------------------------------|
+|data                                    | folder with input data and parameters                                  |
+|results                                 | folder the model outputs will be saved                                 |
+|[run\_simulation.py](run_simulation.py) | python code to run the simulations                                     |
+|[spr\_models.py](spr_models.py)         | python code with the models (module) to be imported during the running |
 
 
 # Instrunctions
@@ -44,3 +42,12 @@ Rodolfo Souza - rodolfosouza@usp.br
 
 André Ferraz - andrepfferraz@gmail.com
 
+---
+# CHANGELOG
+
+
+
+## v 1.0.0, 2020-05-01
+- Project created
+- Documentation
+- Plot sample of the results
