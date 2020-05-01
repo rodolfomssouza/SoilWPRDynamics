@@ -21,6 +21,7 @@ This project is structured as the following:
 |----------------------------------------|------------------------------------------------------------------------|
 |data                                    | folder with input data and parameters                                  |
 |results                                 | folder the model outputs will be saved                                 |
+|[requirements.txt](requirements.txt)    | list of packages need to install|
 |[run\_simulation.py](run_simulation.py) | python code to run the simulations                                     |
 |[spr\_models.py](spr_models.py)         | python code with the models (module) to be imported during the running |
 
@@ -51,3 +52,4 @@ André Ferraz - andrepfferraz@gmail.com
 - Project created
 - Documentation
 - Plot sample of the results
+- requirements file
