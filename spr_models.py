@@ -30,13 +30,39 @@ from tqdm import tqdm
 
 # Class ----------------------------------------------------------------------
 class Soil:
-    """
-    This class runs a simple soil water balance model in order to simulate
-    the soil moisture, evapotranspiration, leakage, and runoff, based on daily
-    rainfall data and some soil parameters.
-    """
 
     def __init__(self, s=None, rain=None, dt=None, rains=None, **kwargs):
+        """
+        This class runs a simple soil water balance model in order to
+        simulate the soil moisture, evapotranspiration, leakage, and
+        runoff, based on daily rainfall data and some soil parameters.
+
+        :param s: initial value of soil moisture [-].
+        :param rain: rainfall value.
+        :param dt: time step to solve the model. Default is 1/48.
+        :param rains: rainfall time series at daily scale.
+        :param kwargs: a dictionary with all parameters needed to
+                       run the model. Ex.:
+
+                    soilpar = {'sh': 0.11,     # s at hygroscopic point
+                               'sw': 0.15,     # s at wilting point
+                               'sstar': 0.28,  # s below field capacity [s*]
+                               'sfc': 0.30,    # s at field capacity
+                               'ks': 201,      # hydraulic conductivity
+                               'phi': 4.05,    # exponent of retention curve
+                               'zr': 40,       # soil depth
+                               'n': 0.37,      # porosity
+                               'emax': 0.50,   # maximum ET
+                               'ew': 0.05,     # evaporation rate
+                               'a': -5.76,     # parameter a of PR model
+                               'b': 5.63,      # parameter b of PR model
+                               'c': -15.32,    # parameter c of PR model
+                               'bd': 1.68      # bulk density
+                       }
+
+        :return: soil water balance and penetration resistance
+                 depending of the methods called.
+        """
         self.s = s
         self.rain = rain
         self.dt = dt
@@ -49,6 +75,8 @@ class Soil:
         This function returns the time (days) of the soil dryness
         for a given initial condition of soil moisture greater
         than soil moisture at field capacity.
+
+        :return: the time in days to reach soil moisture at some levels.
         """
         p = self.p
         beta = 2 * p['phi'] + 4
@@ -71,16 +99,13 @@ class Soil:
               f'reach wilting point: {tsw:=5.2f} days.')
         return stime
 
-    def soilf(self):
-        out = Soil.swb(self)
-        out['PR'] = Soil.soil_pr(self, out['s'])
-        return out
-
     def swb(self):
         """
-        Runs the soil water balance model for each component and returns
-        a dictionary with daily simulation.
-        :return:
+        Runs the soil water balance model for each component and
+        returns a dictionary with daily simulation.
+
+        :return: the water balance components (s, ET, Lk, and Q)
+        at daily scale.
         """
         s = self.s
         p = self.p
@@ -124,6 +149,12 @@ class Soil:
         return rswb
 
     def evapotranspiration(self):
+        """
+        Compute the Evapotranspiration (ET) based on soil moisture.
+
+        :return: the daily evapotransporation in the same unit of
+        rainfall. Ex.: cm/day.
+        """
         s = self.s
         p = self.p
         if s < p['sw']:
@@ -135,12 +166,26 @@ class Soil:
         return et
 
     def leakage(self):
+        """
+        Compute the drainage based on soil moisture.
+
+        :return: the daily drainage in the same unit of
+        rainfall. Ex.: cm/day.
+        """
         s = self.s
         p = self.p
         lk = p['ks'] * s ** (2 * p['phi'] + 3)
         return lk
 
     def swbprday(self):
+        """
+        Runs the soil water balance model for a rainfall series and
+        compute the water balance component (s, ET, Lk, and Q) and
+        the soil penetration resistance.
+
+        :return: water balance components and soil penetration
+        resistance for the same amount of days in the rainfall series.
+        """
         p = self.p
         if self.s is None:
             self.s = (0.75 * p['sh'] + 1.25 * p['sw']) / 2
@@ -168,15 +213,15 @@ class Soil:
         return out
 
     def soil_pr(self, s):
-        p = self.p
         """
         This function returns penetration resistance of soil by
-        Jakobsen and Dexter (1987)
+        Jakobsen and Dexter (1987).
 
-        Args:
-        s - soil moisture;
-        ds - soil density;
-        a, b and c - parameters of the model;
+        :arg: Besides the parameters passed in the class, it is
+        necessary to inform the soil moisture (s).
+
+        :return: the soil penetration resistance in MPa.
         """
+        p = self.p
         pr = np.exp(p['a'] + p['b'] * p['bd'] + p['c'] * s * p['n'])
         return pr

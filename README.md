@@ -1,3 +1,8 @@
+---
+urlcolor: blue
+geometry: margin=1in
+papersize: A4
+---
 
 # Soil water balance and penetration resistance modeling
 
@@ -30,10 +35,11 @@ This project is structured as the following:
 
 1. Install [Python 3.7](https://www.python.org/) or higher;
 2. Install the required libraries listed in [requirements.txt](requirements.txt);
+    - Optionally, you can install Python and the libraries through [Anaconda](https://www.anaconda.com/products/individual);
 3. You may need a IDE to open and edit the code before run it. If you do not know any, try [IDLE](https://www.poftut.com/download-install-and-use-python-idle-editor/);
 4. Put the daily rainfall data and the parameters into the folder **data** different in two csv files;
 5. Try to run the example data before using your data (optional);
-6. Open the file [run_simulation.py](run_simulation.py) and change the name of your file with data and parameters and save the file.
+6. Open the file [run_simulation.py](run_simulation.py) and change the name of your file with data and parameters and save the file;
 7. Run [run_simulation.py](run_simulation.py) and the results will appear in the folder results.
 
 You can change the initial value of soil moisture to compute the dryness time based on the starting point and the soil parameters.

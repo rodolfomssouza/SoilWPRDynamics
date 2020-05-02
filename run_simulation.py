@@ -60,6 +60,7 @@ soil_sim.to_csv('results/SWB_PR_simulation_'+params['name'][0]+'.csv')
 
 # Time of dryness
 s0 = 0.5
+
 tdry = soilpr.Soil(**paramsr).soil_dryness(s0)
 
 # Sample of plot -------------------------------------------------------------
