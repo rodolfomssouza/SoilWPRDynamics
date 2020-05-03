@@ -225,3 +225,33 @@ class Soil:
         p = self.p
         pr = np.exp(p['a'] + p['b'] * p['bd'] + p['c'] * s * p['n'])
         return pr
+
+
+class Pedotransfer:
+
+    def __init__(self, clay, silt, sand, bd):
+        """
+        This class compute some parameters based on pedotransfer functions
+
+        :param clay: clay content
+        :param silt: silt content
+        :param sand: sand content
+        :param bd: bulk density (g/cm3)
+        :return: the parameters a, b, and c of Jakobsen
+                 & Dexter (1987) equation.
+        """
+        self.clay = clay
+        self.silt = silt
+        self.sand = sand
+        self.bd = bd
+
+    def prpar(self):
+        tex = (self.clay + self.silt) / self.sand
+        bd = self.bd
+        a = 1.48 - 1.20 * (bd / tex)
+        b = 2.94 + 0.55 * (bd / tex)
+        c = -41.40 + 14.13 * bd - 7.66 * tex + 10.12 * (bd * tex)
+        prp = {'a': np.round(a, 3),
+               'b': np.round(b, 3),
+               'c': np.round(c, 3)}
+        return prp
