@@ -237,8 +237,7 @@ class Pedotransfer:
         :param silt: silt content
         :param sand: sand content
         :param bd: bulk density (g/cm3)
-        :return: the parameters a, b, and c of Jakobsen
-                 & Dexter (1987) equation.
+        :return: soil physical parameters. See the methods.
         """
         self.clay = clay
         self.silt = silt
@@ -246,6 +245,12 @@ class Pedotransfer:
         self.bd = bd
 
     def prpar(self):
+        """
+        Compute the parameters of Jakobsen & Dexter (1987).
+        PR(thetav, bd) = exp(a + b * bd + c * thetav)
+
+        :return: a, b, and c
+        """
         tex = (self.clay + self.silt) / self.sand
         bd = self.bd
         a = 1.48 - 1.20 * (bd / tex)

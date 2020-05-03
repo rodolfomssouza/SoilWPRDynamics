@@ -47,6 +47,9 @@ You can change the initial value of soil moisture to compute the dryness time ba
 We do not recommend you to edit [spr_models.py](spr_models.py) unless you want to change the equations.
 In any case, it is recommend to backup the project before edit the files.
 
+Besides running the soil water balance and penetration resistance models, there is a class/function called "Pedotransfer" to estimate the parameters of Jakobsen and Dexter (1987) equation.
+You need to input the clay, silt, and sand content and the bulk density. 
+
 
 ## Contact
 
