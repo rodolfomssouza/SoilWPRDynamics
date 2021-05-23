@@ -53,7 +53,7 @@ You need to input the clay, silt, and sand content and the bulk density.
 
 ## Contact
 
-Rodolfo Souza - rodolfosouza@usp.br
+Rodolfo Souza - rodolfo.souza@tamu.edu
 
 André Ferraz - andrepfferraz@gmail.com
 
