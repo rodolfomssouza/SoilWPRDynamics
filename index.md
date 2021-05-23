@@ -14,7 +14,7 @@ $$PR(\theta_v, \rho_b) = \exp(a + b \cdot \rho_b + c \cdot \theta_v)$$
 Thus, $PR$ is low when soil moisture is high and it increases exponentially as soil moisture decreases.
 
 <p align="center">
-<img src="assets/img/FigPRtheta.png" width="480" height="388" >
+<img src="assets/img/FigPRtheta.png" width="480" height="350" >
 </p>
 
 
