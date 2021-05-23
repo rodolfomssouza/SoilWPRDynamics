@@ -18,7 +18,7 @@ Thus, $PR$ is low when soil moisture is high and it increases exponentially as s
 </p>
 
 
-The soil moisture can be modeled using a stochastic model
+The soil moisture can be modeled using a stochastic model:
 
 $$n Z_r \frac{ds}{dt} = R - C_I(R) - Q(R,s) - L(s) - ET(s)$$
 
