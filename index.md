@@ -2,122 +2,28 @@
 layout: default
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+## Summary
 
-[Link to another page](./another-page.html).
+The soil penetration resistance, $PR$, is an important soil characteristic that can affect plant root growth.
+However, $PR$ is not static, and it depends mainly on the soil moisture, $s$ (or $\theta_v$ if it represented as volumetric soil water content), and bulk density, $\rho_b$.
+Considering that bulk density varies less than the soil moisture during the growing season, the fluctuations on PR will be related with soil moisture, which in rainfed systems, depends of the rainfall.
+Although there are several equations to represent the relationship between $PR$ and soil moisture, this relation can be described as:
 
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-# Header 1
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## Header 2
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
+$$PR(\theta_v, \rho_b) = \exp(a + b \cdot \rho_b + c \cdot \theta_v)$$
 
 
-### Definition lists can be used with HTML syntax.
+Thus, $PR$ is low when soil moisture is high and it increases exponentially as soil moisture decreases.
 
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
+<p align="center">
+<img src="assets/img/FigPRtheta.png" width="480" height="388" >
+</p>
 
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
 
-```
-The final element.
-```
+The soil moisture can be modeled using a stochastic model
+
+$$n Z_r \frac{ds}{dt} = R - C_I(R) - Q(R,s) - L(s) - ET(s)$$
+
+
+where $n$ is the soil porosity, $Z_r$ is the effective root depth, $s$ is the relative soil water content at time t ($s_h < s \leq 1$),
+$R$ is the rain, $C_I$ is the canopy interception, $Q$ is the runoff, $L$ is the leakage, and $ET$ is the evapotranspiration.
+Details of the model and parameterization is described by [Souza et al. (2021)](https://doi.org/10.1016/j.still.2020.104768).
