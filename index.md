@@ -2,7 +2,6 @@
 layout: default
 ---
 
-## Summary
 
 The soil penetration resistance, $PR$, is an important soil characteristic that can affect plant root growth.
 However, $PR$ is not static, and it depends mainly on the soil moisture, $s$ (or $\theta_v$ if it represented as volumetric soil water content), and bulk density, $\rho_b$.
